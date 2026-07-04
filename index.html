@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budgetrechner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="kopfzeile">
+      <h1>💶 Budgetrechner</h1>
+      <button type="button" id="modus-umschalten" class="btn btn-modus" title="Dunkelmodus umschalten">🌙</button>
+    </div>
+
+    <!-- ================= SALDO-KARTE ================= -->
+    <!-- Zeigt das Ergebnis (Einkommen minus Ausgaben) groß und farbig an -->
+    <section class="karte saldo-karte" id="saldo-karte">
+      <p class="saldo-label">Dein Saldo</p>
+      <p class="saldo-betrag" id="saldo-anzeige">0,00 €</p>
+    </section>
+
+    <!-- ================= EINKOMMEN-KARTE ================= -->
+    <section class="karte">
+      <h2>Einkommen</h2>
+      <div class="feld-gruppe">
+        <label for="einkommen-input">Monatliches Einkommen</label>
+        <input
+          type="text"
+          id="einkommen-input"
+          placeholder="z. B. 2400"
+          inputmode="decimal"
+          autocomplete="off"
+        >
+        <p class="fehler-text" id="einkommen-fehler"></p>
+      </div>
+    </section>
+
+    <!-- ================= AUSGABEN-KARTE ================= -->
+    <section class="karte">
+      <h2>Ausgaben</h2>
+
+      <!-- Formular zum Hinzufügen einer neuen Ausgabe -->
+      <form id="ausgabe-formular" class="ausgabe-formular" novalidate>
+        <div class="feld-gruppe">
+          <label for="ausgabe-name-input">Name</label>
+          <input
+            type="text"
+            id="ausgabe-name-input"
+            placeholder="z. B. Miete"
+            autocomplete="off"
+          >
+          <p class="fehler-text" id="name-fehler"></p>
+        </div>
+
+        <div class="feld-gruppe">
+          <label for="ausgabe-betrag-input">Betrag pro Monat</label>
+          <input
+            type="text"
+            id="ausgabe-betrag-input"
+            placeholder="z. B. 800"
+            inputmode="decimal"
+            autocomplete="off"
+          >
+          <p class="fehler-text" id="betrag-fehler"></p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">+ Ausgabe hinzufügen</button>
+      </form>
+
+      <!-- Hier fügt JavaScript die Liste der Ausgaben ein -->
+      <ul id="ausgaben-liste" class="ausgaben-liste"></ul>
+
+      <!-- Wird nur angezeigt, wenn die Liste leer ist -->
+      <p class="leer-hinweis" id="leer-hinweis">
+        Noch keine Ausgaben angelegt. Füge oben deine erste Ausgabe hinzu!
+      </p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
